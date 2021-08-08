@@ -1,8 +1,7 @@
-FROM nginx:1.21.1
+FROM nginx:lastest
 LABEL MAINTAINER = "ahmadreza"
 
-COPY nginx.conf  C:\Users\isaqnabavian\Desktop\borazjoon\BZ\config\nginx
-
+COPY nginx.conf  /etc/nginx/conf.d/default.conf
 EXPOSE 80
 
 CMD ["nginx", "-g" , "daemon off;"]
