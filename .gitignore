@@ -1,0 +1,18 @@
+# win stuff
+.DS_Store
+.idea/
+
+#virtualenv
+env/
+
+#database
+db.sqlite3
+
+#migration
+mainpage/migration/
+
+# Credentials
+.env
+
+# Static files
+files/

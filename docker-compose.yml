@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  bz:
+    build:
+     context: .
+     dockerfile : Dockerfile
+    volumes:
+      - .:/BZ
+      - bz_static_volume:/BZ/static
+      - bz_files_volume:/BZ/files
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - bz_network
+      - nginx_network
+    depends_on:
+      - bz_postgresql
+  bz_postgresql:
+    image: postgres:12
+    container_name: bz_postgresql
+    volumes:
+      - bz_postgresql:/var/lib/postgrsql/data
+    restart: always
+    env_file: .env
+    ports:
+      - "5432:5432"
+    networks:
+      - bz_network
+
+volumes:
+  bz_postgresql:
+    external: true
+  bz_static_volume :
+    external: true
+  bz_files_volume :
+    external: true
+networks:
+  bz_network:
+    external: true
+  nginx_network :
+    external: true
