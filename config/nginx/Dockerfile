@@ -1,4 +1,4 @@
-FROM nginx:lastest
+FROM nginx:1.21.1
 LABEL MAINTAINER = "ahmadreza"
 
 COPY nginx.conf  /etc/nginx/conf.d/default.conf
